@@ -1,0 +1,6 @@
+*.png
+*.gif
+
+**/frame_dots
+**/frame_png
+dots_png

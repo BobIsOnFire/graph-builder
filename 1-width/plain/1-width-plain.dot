@@ -20,9 +20,4 @@ digraph {
     Витебск -> НижНовгород;
     Рига -> Каунас;
     Рига -> Таллинн;
-    Казань [style=filled,fillcolor=cyan];
-    Москва [style=filled,fillcolor=cyan];
-    СПетербург [style=filled,fillcolor=cyan];
-    Рига [style=filled,fillcolor=cyan];
-    Таллинн [style=filled,fillcolor=cyan];
 }

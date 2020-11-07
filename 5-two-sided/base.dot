@@ -1,0 +1,26 @@
+digraph {
+    Казань -> Москва /* FRAMES */;
+    Рига -> Таллинн [dir=back] /* FRAMES */;
+    Казань -> Уфа /* FRAMES */;
+    Каунас -> Рига [dir=back] /* FRAMES */;
+    Москва -> Донецк /* FRAMES */;
+    СПетербург -> Рига [dir=back] /* FRAMES */;
+    Москва -> Минск /* FRAMES */;
+    Вильнюс -> Каунас [dir=back] /* FRAMES */;
+    Москва -> Орел /* FRAMES */;
+    Калининград -> СПетербург [dir=back] /* FRAMES */;
+    Москва -> СПетербург /* FRAMES */;
+
+    Казань /* FRAMES */;
+    Москва /* FRAMES */;
+    Рига /* FRAMES */;
+    Таллинн /* FRAMES */;
+    Уфа /* FRAMES */;
+    Каунас /* FRAMES */;
+    Донецк /* FRAMES */;
+    СПетербург /* FRAMES */;
+    Минск /* FRAMES */;
+    Вильнюс /* FRAMES */;
+    Орел /* FRAMES */;
+    Калининград /* FRAMES */;
+}
