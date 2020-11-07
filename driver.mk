@@ -1,4 +1,5 @@
 #### Environment setting
+SHELL := /bin/bash
 
 FORMAT ?= png
 GIFS   ?= NO
@@ -33,7 +34,6 @@ INSTALL_PICTURES += $(INSTALL_DIR)/$(GIF)
 DELAY ?= 60
 LOOP  ?= 0
 
-FRAME_DOT_SCRIPT  ?= ../mkframe.sh
 GIF_CONVERT_EXEC  ?= convert
 GIF_CONVERT_FLAGS += -delay $(DELAY) -loop $(LOOP)
 
@@ -69,7 +69,17 @@ ifneq ($(FRAMES),)
 all: $(GIF) $(FRAME_DOT_DIR) $(FRAME_PIC_DIR)
 
 $(FRAME_DOT_DIR)/%.dot: $(FRAME_DIR)/% Makefile | $(FRAME_DOT_DIR)
-	$(FRAME_DOT_SCRIPT) < $< > $@
+	@echo "Translating $@ file" 
+	@readarray -t replaces < $<; \
+	i=0; \
+	while read line; do \
+    	if [[ $$line == *'/* FRAMES */'* ]]; then \
+        	echo "$$line" | sed -e "s@/\* FRAMES \*/@\[$${replaces[$$i]}\]@"; \
+        	i=$$(( $$i + 1 )); \
+    	else \
+        	echo "$$line"; \
+    	fi; \
+	done < base.dot > $@
 
 $(FRAME_PIC_DIR)/%.$(FORMAT): $(FRAME_DOT_DIR)/%.dot Makefile | $(FRAME_PIC_DIR)
 	$(DOT_EXEC) $(DOT_FLAGS) $< > $@

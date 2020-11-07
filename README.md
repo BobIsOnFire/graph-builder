@@ -34,39 +34,36 @@ See mans for detailed descriptions.
 
 ```
 root
-| prj1
-| | frames
-| | | 01.frame
-| | | 02.frame
-| | | ...
-| | plain
-| | | prj1_img-plain.dot
-| | | ...
-| | base.dot
-| | Makefile
-| prj2
-| | ...
-| ...
-| driver.mk
-| Makefile
-| mkframe.sh
+├── prj1
+│   ├── base.dot
+│   ├── frames
+│   │   ├── 01.frame
+│   │   ├── 02.frame
+│   │   └── ...
+│   ├── Makefile
+│   └── plain
+│       ├── prj1-img-plain.dot
+│       └── ...
+├── prj2
+│   └── ...
+│   ...
+├── driver.mk
+└── Makefile
 ```
 
 ### Root consists of:
+* projects directories.
 * driver.mk - main machinery for project builds.
 * Makefile - to recursively launch every project.
-* mkframe.sh - a small script to transform base.dot and a .frame file into a
-complete frame description.
-* projects directories.
 
 ### Project consists of:
-* plain directory - every .dot file located here is transformed into plain
-image during the build.
+* base.dot - a base file for frame description.
 * frames directory - raw style description for every frame. These files are
 translated into .dot files, which then are transformed into a single .gif file
 during the build. 
-* base.dot - a base file for frame description.
 * Makefile - configuration for a single project.
+* plain directory - every .dot file located here is transformed into plain
+image during the build.
 
 # Building your own project
 1. Create a directory structure for it:
